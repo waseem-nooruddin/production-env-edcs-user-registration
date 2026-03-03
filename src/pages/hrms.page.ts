@@ -245,15 +245,6 @@ export class HrmsPage {
   }
 
   async selectDistrict(district: string) {
-<<<<<<< HEAD
-    await this.page.locator("#root_district").click();
-    await this.page.getByRole("option", { name: district }).first().click();
-  }
-
-  async selectCity(city: string) {
-    await this.page.locator("#root_cityTown").first().click();
-    await this.page.getByRole("option", { name: city }).click();
-=======
     // Wait for any MUI popover to finish closing
     const popover = this.page.locator('.MuiPopover-root');
     if (await popover.count()) {
@@ -292,7 +283,6 @@ export class HrmsPage {
 
     await expect(option).toBeVisible();
     await option.click();
->>>>>>> 68bece9 (fix: resolve MUI Popover strict mode violations and selectDistrict scoping issue)
   }
 
   async fillEmail(email: string) {
