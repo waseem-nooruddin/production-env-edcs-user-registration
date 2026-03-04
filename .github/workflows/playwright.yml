@@ -1,37 +1,64 @@
 name: Playwright Tests
+
 on:
-  # Run on push to main/master branches
   push:
     branches: [ main, master ]
-  # Run on pull requests
   pull_request:
     branches: [ main, master ]
-  # Run every day at 4 AM IST (10:30 PM UTC previous day)
   schedule:
-    - cron: '30 22 * * *'
-  # Allow manual trigger from GitHub Actions UI
+    - cron: '30 22 * * *'  # 4 AM IST daily
   workflow_dispatch:
+
 jobs:
-  test:
+  smoke-tests:
+    name: Smoke Tests
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    env:
+      TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
+      PLAYWRIGHT_REPORT_URL: ${{ secrets.PLAYWRIGHT_REPORT_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run Smoke Tests
+        id: smoke
+        run: npx playwright test --grep @smoke --reporter=html
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: smoke-report
+          path: playwright-report/
+          retention-days: 30
+
+  regression-tests:
+    name: Regression Tests
+    needs: smoke-tests
+    if: success()  # Runs only if smoke-tests pass
     timeout-minutes: 60
     runs-on: ubuntu-latest
     env:
       TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
       PLAYWRIGHT_REPORT_URL: ${{ secrets.PLAYWRIGHT_REPORT_URL }}
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-    - name: Install dependencies
-      run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run Regression Tests
+        run: npx playwright test --grep @regression --reporter=html
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: regression-report
+          path: playwright-report/
+          retention-days: 30

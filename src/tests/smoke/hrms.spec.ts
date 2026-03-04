@@ -1,12 +1,13 @@
 import { test, expect } from "@playwright/test";
-import { LoginPage } from "../pages/login.page";
-import { NavBarPage } from "../pages/navbar.page";
-import { credentials } from "./resources/credentials";
-import { EmployeeRegistration } from "../pages/employee.registration.page";
-import { testdata } from "./resources/testdata";
-import { testdata as hrms } from "./resources/hrmstestdata";
-import { HrmsPage } from "../pages/hrms.page";
-import { EmployeeApprovePage } from "../pages/employee.approve.page";
+import { LoginPage } from "../../pages/login.page";
+import { NavBarPage } from "../../pages/navbar.page";
+import { credentials } from "../resources/credentials";
+import { EmployeeRegistration } from "../../pages/employee.registration.page";
+import { testdata } from "../resources/testdata";
+import { testdata as hrms } from "../resources/hrmstestdata";
+import { HrmsPage } from "../../pages/hrms.page";
+import { EmployeeApprovePage } from "../../pages/employee.approve.page";
+import { generateEmployeeNumber, saveEmployeeToJson, readEmployeeFromJson } from "../../utils/employeeNumber";
 
 test.describe("Employee Registration", () => {
   let loginPage: LoginPage;
@@ -55,7 +56,9 @@ test.describe("Employee Registration", () => {
       await hrmsPage.clickNext();
 
       //Employment Details
-      await hrmsPage.enterEmployeeNumber(hrms.Employee_Number);
+      const employeeNumber = generateEmployeeNumber();
+      saveEmployeeToJson(employeeNumber);
+      await hrmsPage.enterEmployeeNumber(employeeNumber);
       await hrmsPage.enterEmployeeEpfNumber(hrms.Emplloyee_EPFNumber);
       await hrmsPage.selectBranch(hrms.branchName);
       await hrmsPage.selectDivision(hrms.Division);

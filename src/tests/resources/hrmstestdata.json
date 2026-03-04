@@ -36,12 +36,14 @@
     "hrms_fillRelationship": "Mother",
     "hrms_fillEmergencyMobile": "078554322",
     "hrms_fillTelephone": "0112864236",
+    
     "Emplloyee_EPFNumber": "345567",
-    "searchEmployeeId": "2343",
-    "Employee_Number_1": "58070",
+    "searchEmployeeId": "58070",
+    "Employee_Number_1": "47072",
     "slectBranch": "Head Office - Default",
     "branchName": "Kandy",
     "Division": "Default",
     "Resigned": "NOT AVAILABLE",
     "EmployeeType": "Permanent"
 }
+

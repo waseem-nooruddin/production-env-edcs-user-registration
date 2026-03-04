@@ -1,11 +1,11 @@
 import { test, expect } from "@playwright/test";
-import { LoginPage } from "../pages/login.page";
-import { ProductPage } from "../pages/product.page";
-import { UserManagementPage } from "../pages/user.management.page";
-import { RoleRestrictionPage } from "../pages/role.restriction.page";
-import { credentials } from "./resources/credentials";
-import { NavBarPage } from "../pages/navbar.page";
-import { testdata } from "./resources/testdata";
+import { LoginPage } from "../../pages/login.page";
+import { ProductPage } from "../../pages/product.page";
+import { UserManagementPage } from "../../pages/user.management.page";
+import { RoleRestrictionPage } from "../../pages/role.restriction.page";
+import { credentials } from "../resources/credentials";
+import { NavBarPage } from "../../pages/navbar.page";
+import { testdata } from "../resources/testdata";
 
 test.describe("role restriction Page", () => {
   let loginPage: LoginPage;

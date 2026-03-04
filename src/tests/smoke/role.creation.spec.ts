@@ -1,9 +1,9 @@
 import { test, expect } from "@playwright/test";
-import { credentials } from "./resources/credentials";
-import { LoginPage } from "../pages/login.page";
-import { NavBarPage } from "../pages/navbar.page";
-import { RoleCreationPage } from "../pages/role.creation.page";
-import { testdata } from "./resources/testdata";
+import { credentials } from "../resources/credentials";
+import { LoginPage } from "../../pages/login.page";
+import { NavBarPage } from "../../pages/navbar.page";
+import { RoleCreationPage } from "../../pages/role.creation.page";
+import { testdata } from "../resources/testdata";
 
 test.describe("Role Creation Page", () => {
   let loginPage: LoginPage;

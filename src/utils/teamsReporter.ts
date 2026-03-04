@@ -130,7 +130,7 @@ export default class TeamsReporter implements Reporter {
         console.log(`📤 Sending Teams notification (attempt ${attempt}/${maxRetries})...`);
         console.log(`📍 Webhook URL: ${this.webhookUrl!.substring(0, 60)}...`);
 
-        const response = await axios.post(this.webhookUrl, messageCard, {
+        const response = await axios.post(this.webhookUrl!, messageCard, {
           headers: {
             'Content-Type': 'application/json',
           },
