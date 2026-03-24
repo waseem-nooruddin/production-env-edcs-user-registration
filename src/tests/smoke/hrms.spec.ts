@@ -7,7 +7,11 @@ import { testdata } from "../resources/testdata";
 import { testdata as hrms } from "../resources/hrmstestdata";
 import { HrmsPage } from "../../pages/hrms.page";
 import { EmployeeApprovePage } from "../../pages/employee.approve.page";
-import { generateEmployeeNumber, saveEmployeeToJson, readEmployeeFromJson } from "../../utils/employeeNumber";
+import {
+  generateEmployeeNumber,
+  saveEmployeeToJson,
+  readEmployeeFromJson,
+} from "../../utils/employeeNumber";
 
 test.describe("Employee Registration", () => {
   let loginPage: LoginPage;
@@ -16,11 +20,15 @@ test.describe("Employee Registration", () => {
     loginPage = new LoginPage(page);
     await loginPage.navigateToLoginPage();
   });
+
   test(
     "Verify access to Employee Registration form",
     { tag: ["@smoke", "@TC_01", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+      await loginPage.login(
+        credentials.admin2.username,
+        credentials.admin2.password,
+      );
       const navBarpage = new NavBarPage(page);
       await navBarpage.openHrmsModule();
       const employeeRegistration = new EmployeeRegistration(page);
@@ -35,7 +43,10 @@ test.describe("Employee Registration", () => {
     "Create employee with all mandatory fields",
     { tag: ["@smoke", "@TC_02", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+      await loginPage.login(
+        credentials.admin2.username,
+        credentials.admin2.password,
+      );
       const navBarpage = new NavBarPage(page);
       await navBarpage.openHrmsModule();
       const hrmsPage = new HrmsPage(page);
@@ -44,92 +55,118 @@ test.describe("Employee Registration", () => {
 
       //Personal Details
       await hrmsPage.selectTitle();
-      await hrmsPage.enterFullName(hrms.hrms_enterFullName);
-      await hrmsPage.enterSurName(hrms.hrms_enterSurName);
+      await hrmsPage.enterFullName(hrms.personalInformation.nameInFull);
+      await hrmsPage.enterSurName(hrms.personalInformation.surname);
       await hrmsPage.selectGender();
-      await hrmsPage.enterDOB(hrms.hrms_dateOfBirth);
-      await hrmsPage.enterPlaceOfBirth(hrms.hrms_placeOfBirth);
+      await hrmsPage.enterDOB(hrms.personalInformation.dateOfBirth);
+      await hrmsPage.enterPlaceOfBirth(hrms.personalInformation.placeOfBirth);
       await hrmsPage.selectBloodGroup();
-      await hrmsPage.enterNIC(hrms.hrms_nic);
-      await hrmsPage.enterNicIssueDate(hrms.hrms_nicDateOfIssue);
-      await hrmsPage.enterMaritalStatus(hrms.hrms_enterMaritalStatus);
+      await hrmsPage.enterNIC(hrms.identificationInformation.nicNumber);
+      await hrmsPage.enterNicIssueDate(
+        hrms.identificationInformation.nicIssueDate,
+      );
+      await hrmsPage.enterMaritalStatus(
+        hrms.additionalInformation.maritalStatus,
+      );
       await hrmsPage.clickNext();
 
       //Employment Details
       const employeeNumber = generateEmployeeNumber();
       saveEmployeeToJson(employeeNumber);
       await hrmsPage.enterEmployeeNumber(employeeNumber);
-      await hrmsPage.enterEmployeeEpfNumber(hrms.Emplloyee_EPFNumber);
-      await hrmsPage.selectBranch(hrms.branchName);
-      await hrmsPage.selectDivision(hrms.Division);
-      await hrmsPage.selectResignedTerrminated(hrms.Resigned);
-      await hrmsPage.selectEmployeeType(hrms.EmployeeType);
-      await hrmsPage.enterDateOfJoin(hrms.hrms_dateOfJoin);
-      await hrmsPage.enterenterworkShipCategoryI(hrms.hrms_workShipCategoryId);
-      await hrmsPage.enterpriorNotiePeriod(hrms.hrms_noticeDate);
-      await hrmsPage.enterConfirmationDueOn(hrms.hrms_enterConfirmationDueOn);
-      await hrmsPage.enterpersonalGrade(hrms.hrms_personalGrade);
-      await hrmsPage.enterCostCenter(hrms.hrms_costCenter);
-      await hrmsPage.enterjobCategory(hrms.hrms_enterjobCategory);
-      await hrmsPage.enterCurrentDesignation(hrms.hrms_enterCurrentDesignation);
-      await hrmsPage.enterdateofDesignation(hrms.hrms_enterdateofDesignation);
-      await hrmsPage.enterreportingPerson(hrms.hrms_enterreportingPerson);
-      await hrmsPage.enterReportingDesignation(hrms.enterReportingDesignation);
+      await hrmsPage.selectBranch(hrms.organizationDetails.branch);
+      await hrmsPage.selectDivision(hrms.organizationDetails.division);
+      await hrmsPage.selectResignedTerrminated(
+        hrms.appointmentInformation.resignedTerminated,
+      );
+      await hrmsPage.selectEmployeeType(
+        hrms.appointmentInformation.employeeType,
+      );
+      await hrmsPage.enterDateOfJoin(hrms.appointmentInformation.dateOfJoin);
+      await hrmsPage.enterenterworkShipCategoryI(
+        hrms.appointmentInformation.workingShiftCategory,
+      );
+      await hrmsPage.enterpriorNotiePeriod(
+        hrms.appointmentInformation.priorNoticePeriod,
+      );
+      await hrmsPage.enterConfirmationDueOn(
+        hrms.appointmentInformation.confirmationDueOn,
+      );
+      await hrmsPage.enterpersonalGrade(
+        hrms.appointmentInformation.personalGrade,
+      );
+      await hrmsPage.enterCostCenter(hrms.appointmentInformation.costCenter);
+      await hrmsPage.enterjobCategory(
+        hrms.employeePosition.positionHistory[0].jobCategory,
+      );
+      await hrmsPage.enterCurrentDesignation(
+        hrms.employeePosition.positionHistory[0].designation,
+      );
+      await hrmsPage.enterdateofDesignation(
+        hrms.employeePosition.positionHistory[0].startDate,
+      );
+      await hrmsPage.enterreportingPerson(
+        hrms.employeePosition.positionHistory[0].reportingPerson,
+      );
       await hrmsPage.clickOnAddButton();
-      await hrmsPage.enterpermanenetLocation(hrms.hrms_enterpermanenetLocation);
-      await hrmsPage.enterTemporaryLocation(hrms.hrms_enterTemporaryLocation);
-      await hrmsPage.enterfromDate(hrms.hrms_enterfromDate);
+      await hrmsPage.enterpermanenetLocation(
+        hrms.locationDetails.locationHistory[0].location,
+      );
+      await hrmsPage.enterfromDate(
+        hrms.locationDetails.locationHistory[0].fromDate,
+      );
       await hrmsPage.clickLocationDetailsAddButton();
       await hrmsPage.clickOnNextButton();
 
       //Contact Details
 
-      await hrmsPage.fillAddressLine1(hrms.hrms_AddressLine1);
-      await hrmsPage.fillAddressLine2(hrms.hrms_AddressLine2);
-      await hrmsPage.fillAddressLine3(hrms.hrms_AddressLine3);
+      await hrmsPage.fillAddressLine1(hrms.residentialAddress.line1);
+      await hrmsPage.fillAddressLine2(hrms.residentialAddress.line2);
+      await hrmsPage.fillAddressLine3(hrms.residentialAddress.line3);
 
-      await hrmsPage.selectProvince(hrms.hrms_province);
-      await hrmsPage.selectDistrict(hrms.hrms_district);
-      await hrmsPage.selectCity(hrms.hrms_city);
+      await hrmsPage.selectProvince(hrms.residentialAddress.province);
+      await hrmsPage.selectDistrict(hrms.residentialAddress.district);
+      await hrmsPage.selectCity(hrms.residentialAddress.cityTown);
 
-      await hrmsPage.fillEmail(hrms.hrms_fillEmail);
-      await hrmsPage.fillMobile(hrms.hrms_fillMobile);
+      await hrmsPage.fillEmail(hrms.contactDetails.email);
+      await hrmsPage.fillMobile(hrms.contactDetails.mobile);
 
-      await hrmsPage.fillEmergencyName(hrms.hrms_fillEmergencyName);
-      await hrmsPage.fillRelationship(hrms.hrms_fillRelationship);
-      await hrmsPage.fillEmergencyMobile(hrms.hrms_fillEmergencyMobile);
-      await hrmsPage.fillTelephone(hrms.hrms_fillTelephone);
+      await hrmsPage.clickNextButton();
 
-      // await hrmsPage.clickNextButton();
+      //Qualification Details
+      await hrmsPage.selectOnQualificationType(
+        hrms.qualifications.qualificationHistory[0].qualificationType,
+      );
+      await hrmsPage.selectOnQualification(
+        hrms.qualifications.qualificationHistory[0].qualification,
+      );
+      await hrmsPage.selectOnCourseDuration(
+        hrms.qualifications.qualificationHistory[0].courseDuration,
+      );
+      await hrmsPage.clickAddButton();
+      await hrmsPage.clickNextButton();
 
-      // //Qualification Details
-      // await hrmsPage.selectOnQualificationType("Local");
-      // await hrmsPage.selectOnQualification("Dip");
-      // await hrmsPage.selectOnCourseDuration("1 Year");
-      // await hrmsPage.clickAddButton();
-      // await hrmsPage.clickNextButton();
+      //salary details
 
-      // //salary details
+      await hrmsPage.fillBasicSalary(hrms.salaryInformation.basicSalary);
+      await hrmsPage.selectAllowanceType(hrms.salaryInformation.allowanceType);
+      //await hrmsPage.fillAllowanceAmount('20000.00');
+      await hrmsPage.clickOnTheAddButton();
+      await hrmsPage.clickOnTheNextButton();
 
-      // await hrmsPage.fillBasicSalary("100000.00");
-      // await hrmsPage.selectAllowanceType('Transport');
-      // //await hrmsPage.fillAllowanceAmount('20000.00');
-      // await hrmsPage.clickOnTheAddButton();
-      // await hrmsPage.clickOnTheNextButton();
+      //Bank Details
 
-      // //Bank Details
+      await hrmsPage.selectBank(hrms.bankInformation.bank);
+      await hrmsPage.selectOnDivision(hrms.bankInformation.division);
+      await hrmsPage.selectAccountType(hrms.bankInformation.accountType);
+      await hrmsPage.fillAccountNumber(hrms.bankInformation.accountNumber);
+      await hrmsPage.clickAddButton();
+      await hrmsPage.clickNextButton();
 
-      // await hrmsPage.selectBank("Commercial Bank PLC");
-      // await hrmsPage.selectOnDivision("Colombo");
-      // await hrmsPage.selectAccountType("Savings");
-      // await hrmsPage.fillAccountNumber("80002545");
-      // await hrmsPage.clickAddButton();
-      // await hrmsPage.clickNextButton();
-
-      // //Document Upload
-      // await hrmsPage.uploadDocument("test-file.jpg");
-      // await hrmsPage.clickOnSave();
-      // await hrmsPage.submitApplication();
+      //Document Upload
+      await hrmsPage.uploadDocument("test-file.jpg");
+      await hrmsPage.clickOnSave();
+      await hrmsPage.submitApplication();
     },
   );
 
@@ -137,15 +174,20 @@ test.describe("Employee Registration", () => {
     "Verify employee appears in Employee List",
     { tag: ["@smoke", "@TC_03", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+      await loginPage.login(
+        credentials.admin2.username,
+        credentials.admin2.password,
+      );
+      await page.waitForLoadState("networkidle");
       const navBarpage = new NavBarPage(page);
       await navBarpage.openHrmsModule();
-      await navBarpage.clickActivateEmployeeAccount();
+      const employeeRegistration = new EmployeeRegistration(page);
+      await employeeRegistration.clickRegisterEmployee();
       const hrmsPage = new HrmsPage(page);
-      await hrmsPage.clickRegisterEmployee();
-      await hrmsPage.searchEmployeeId(hrms.Employee_Number_1);
+      await hrmsPage.searchEmployeeId(hrms.employeeIdentity.employeeNumber);
+      await page.waitForLoadState("networkidle");
       await expect(
-        page.locator("tr", { hasText: hrms.Employee_Number_1 }),
+        page.locator("tr", { hasText: hrms.employeeIdentity.employeeNumber }),
       ).toBeVisible();
     },
   );
@@ -154,13 +196,16 @@ test.describe("Employee Registration", () => {
     "Verify the view button functionality of the employee record",
     { tag: ["@smoke", "@TC_04", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+      await loginPage.login(
+        credentials.admin2.username,
+        credentials.admin2.password,
+      );
       const navBarpage = new NavBarPage(page);
       await navBarpage.openHrmsModule();
       await navBarpage.clickActivateEmployeeAccount();
       const hrmsPage = new HrmsPage(page);
       await hrmsPage.clickRegisterEmployee();
-      await hrmsPage.searchEmployeeId(hrms.Employee_Number_1);
+      await hrmsPage.searchEmployeeId(hrms.employeeIdentity.employeeNumber);
       await hrmsPage.clickEditButton();
       await expect(
         page.getByRole("heading", { name: "View Register Employee" }),
@@ -172,7 +217,10 @@ test.describe("Employee Registration", () => {
     "Verify that HR admin user can approve employee details record",
     { tag: ["@smoke", "@TC_05", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+      await loginPage.login(
+        credentials.admin2.username,
+        credentials.admin2.password,
+      );
       const navBarpage = new NavBarPage(page);
       await navBarpage.openHrmsModule();
       await navBarpage.clickActivateEmployeeAccount();
@@ -180,9 +228,11 @@ test.describe("Employee Registration", () => {
         page.getByRole("heading", { name: "Employee Approve" }),
       ).toBeVisible();
       const employeeApprovePage = new EmployeeApprovePage(page);
-      await employeeApprovePage.searchEmployeeId(hrms.searchEmployeeId);
+      await employeeApprovePage.searchEmployeeId(
+        hrms.employeeIdentity.employeeNumber,
+      );
       await expect(
-        page.locator("tr", { hasText: hrms.searchEmployeeId }),
+        page.locator("tr", { hasText: hrms.employeeIdentity.employeeNumber }),
       ).toBeVisible();
       // await employeeApprovePage.clickApproveButton();
       // await employeeApprovePage.clickApproveConfirm();

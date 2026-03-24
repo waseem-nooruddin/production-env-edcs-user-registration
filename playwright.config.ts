@@ -27,8 +27,8 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL:
-      "http://dev-edcs-v6-1531592723.ap-southeast-1.elb.amazonaws.com/feauth/",
-    //"http://qa-edcs-v1-1604665350.ap-southeast-1.elb.amazonaws.com/feauth/",
+    //"http://dev-edcs-v6-1531592723.ap-southeast-1.elb.amazonaws.com/feauth/",
+    "http://qa-edcs-v1-1604665350.ap-southeast-1.elb.amazonaws.com/feauth/",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     actionTimeout: 550000, // 40 seconds

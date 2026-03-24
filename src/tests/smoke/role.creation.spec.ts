@@ -17,7 +17,7 @@ test.describe("Role Creation Page", () => {
     "Verify navigation to Role Creation page",
     { tag: ["@smoke", "@TC_23", "@positive1"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       await navBarpage.clickRoleCreation();
@@ -31,7 +31,7 @@ test.describe("Role Creation Page", () => {
     "Verify Add New role action",
     { tag: ["@smoke", "@TC_24", "@positive1"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       await navBarpage.clickRoleCreation();
@@ -47,7 +47,7 @@ test.describe("Role Creation Page", () => {
     "Verify successful creation of a new role",
     { tag: ["@smoke", "@TC_25", "@positive1"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       await navBarpage.clickRoleCreation();
@@ -56,9 +56,9 @@ test.describe("Role Creation Page", () => {
       // ).toBeVisible();
       const roleCreationPage = new RoleCreationPage(page);
       await roleCreationPage.clickAddRoleCreation();
-      await roleCreationPage.enterRoleName(testdata.enterRoleName);
+      await roleCreationPage.enterRoleName(testdata.roleConfiguration.enterRoleName);
       await roleCreationPage.enterRoleDescription(
-        testdata.enterRoleDescription,
+        testdata.roleConfiguration.enterRoleDescription,
       );
     },
   );

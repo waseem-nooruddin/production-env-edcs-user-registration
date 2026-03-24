@@ -1,23 +1,56 @@
 {
+  "userDetails": {
     "userid": "166516 - Testing Five ",
     "searchingUser": "166516 - Testing Five ",
-    "Employee_Number": "37156",
-    "User_Role_Id": "Administrative Officer",
+    "selectUser": "1665"
+  },
+
+  "employeeIdentifiers": {
+    "Employee_Number": "35008",
+    "ReEmployee_Number": "45819",
     "NegativeEmployee_Number": "17672",
     "Emplloyee_EPFNumber": "17631",
-    "loginId_Authorization": "17631",
-    "userId_Restriction": "166509rn - Qa One",
-    "selectUser": "166513rn - Testing Head Office System User",
+    "ndEmployee_Number": "60539"
+  },
+
+  "roleConfiguration": {
+    "User_Role_Id": "EDCS Admin Role ",
+    "enterRoleName": "Test Roles",
+    "enterRoleDescription": "This is a test roles",
+    "selectUserRole": "05",
+    "roleName_AdminRole": "EDCS Admin Role"
+  },
+
+  "organizationStructure": {
     "slectBranch": "Kandy - HR",
     "branchName": "Kandy",
     "Division": "Default",
-    "Resigned": "NOT AVAILABLE",
     "EmployeeType": "Probation",
-    "searchMenuActionList": "348",
-    "enterRoleName": "Test Roles",
-    "enterRoleDescription": "This is a test roles",
-    "selectUserRole": "EDCS Admin",
-    "roleName_AdminRole": "EDCS Admin Role",
-    "ndEmployee_Number": "60539",
+    "Resigned": "NOT AVAILABLE"
+  },
+
+  "loginCredentials": {
+    "loginId_Authorization": "17631",
     "ndEmployee_Password": "115edfb9-a"
+  },
+
+  "restrictionConfiguration": {
+    "userId_Restriction": "166509rn - Qa One",
+    "location": "999-HO",
+    "restrictionReason": "Testing"
+  },
+
+  "systemOperations": {
+    "searchMenuActionList": "284"
+  },
+
+ "Branch": {
+    "Branch": "Galle"
+
+  },
+
+  "Date": {
+    "Date":"2026-04-08",
+    "EarlierDate":"2026-03-08"
+  }
 }

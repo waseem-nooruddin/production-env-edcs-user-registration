@@ -19,13 +19,13 @@ test.describe("User Authorization", () => {
     "Verify newly created user is displayed in User Authorization page",
     { tag: ["@smoke", "@TC_11", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       const userAuthorization = new UserAuthorization(page);
       await navBarpage.clickUserAuthorization();
       await userAuthorization.verifyUserAuthorizationPage();
-      await userAuthorization.searchingUser(testdata.loginId_Authorization);
+      await userAuthorization.searchingUser(testdata.loginCredentials.loginId_Authorization);
     },
   );
 
@@ -33,7 +33,7 @@ test.describe("User Authorization", () => {
     "Verify authorize button is available for pending users",
     { tag: ["@smoke", "@TC_12", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       const userAuthorization = new UserAuthorization(page);
@@ -48,7 +48,7 @@ test.describe("User Authorization", () => {
     "Verify successful authorization of user",
     { tag: ["@smoke", "@TC_13", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       const userAuthorization = new UserAuthorization(page);

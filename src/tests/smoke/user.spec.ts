@@ -18,7 +18,7 @@ test.describe("User Page", () => {
     "Verify navigation to New User ID Creation screen",
     { tag: ["@smoke", "@TC_07", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       await navBarpage.navigateToUserPage();
@@ -30,13 +30,13 @@ test.describe("User Page", () => {
     "Verify validation of Login ID and auto-population of user details",
     { tag: ["@smoke", "@TC_08", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       await navBarpage.navigateToUserPage();
       const userManagementPage = new UserManagementPage(page);
       await userManagementPage.clickAddNewUser();
-      await userManagementPage.enterLoginID(testdata.Employee_Number);
+      await userManagementPage.enterLoginID(testdata.employeeIdentifiers.Employee_Number);
       const empNumber = await page.locator("#root_empNumber").inputValue();
       expect(empNumber).toBe("");
       await userManagementPage.clickValidateButton();
@@ -47,15 +47,16 @@ test.describe("User Page", () => {
     "Verify successful creation of new user with selected role",
     { tag: ["@smoke", "@TC_09", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       await navBarpage.navigateToUserPage();
       const userManagementPage = new UserManagementPage(page);
       await userManagementPage.clickAddNewUser();
-      await userManagementPage.enterLoginID(testdata.Employee_Number);
+      await userManagementPage.enterLoginID(testdata.employeeIdentifiers.Employee_Number);
       await userManagementPage.clickValidateButton();
       await userManagementPage.enterUserRoleId();
+      await userManagementPage.selectRandomUserRole();
       await userManagementPage.enterSubmitButton();
     },
   );
@@ -64,7 +65,7 @@ test.describe("User Page", () => {
     "Verify newly created user is displayed in View All Users grid",
     { tag: ["@smoke", "@TC_10", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       await navBarpage.navigateToUserPage();

@@ -1,0 +1,210 @@
+[dotenv@17.3.1] injecting env (4) from .env -- tip: ≡ƒ¢á∩╕Å  run anywhere with `dotenvx run -- yourcommand`
+{
+  "config": {
+    "configFile": "C:\\Users\\WaseemNooruddin\\VSCodeProjects\\Current Version\\Edcs-User Registration_QA - Smoke Testing\\playwright.config.ts",
+    "rootDir": "C:/Users/WaseemNooruddin/VSCodeProjects/Current Version/Edcs-User Registration_QA - Smoke Testing/src/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/WaseemNooruddin/VSCodeProjects/Current Version/Edcs-User Registration_QA - Smoke Testing/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/WaseemNooruddin/VSCodeProjects/Current Version/Edcs-User Registration_QA - Smoke Testing/src/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 8,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "smoke\\hrms.spec.ts",
+      "file": "smoke/hrms.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Employee Registration",
+          "file": "smoke/hrms.spec.ts",
+          "line": 16,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Verify employee appears in Employee List",
+              "ok": false,
+              "tags": [
+                "smoke",
+                "TC_03",
+                "positive"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 29889,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('tr').filter({ hasText: '16935' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('tr').filter({ hasText: '16935' })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('tr').filter({ hasText: '16935' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('tr').filter({ hasText: '16935' })\u001b[22m\n\n    at C:\\Users\\WaseemNooruddin\\VSCodeProjects\\Current Version\\Edcs-User Registration_QA - Smoke Testing\\src\\tests\\smoke\\hrms.spec.ts:190:9",
+                        "location": {
+                          "file": "C:\\Users\\WaseemNooruddin\\VSCodeProjects\\Current Version\\Edcs-User Registration_QA - Smoke Testing\\src\\tests\\smoke\\hrms.spec.ts",
+                          "column": 9,
+                          "line": 190
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 188 |\u001b[39m       \u001b[36mawait\u001b[39m expect(\n \u001b[90m 189 |\u001b[39m         page\u001b[33m.\u001b[39mlocator(\u001b[32m\"tr\"\u001b[39m\u001b[33m,\u001b[39m { hasText\u001b[33m:\u001b[39m hrms\u001b[33m.\u001b[39memployeeIdentity\u001b[33m.\u001b[39memployeeNumber })\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 190 |\u001b[39m       )\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 191 |\u001b[39m     }\u001b[33m,\u001b[39m\n \u001b[90m 192 |\u001b[39m   )\u001b[33m;\u001b[39m\n \u001b[90m 193 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\WaseemNooruddin\\VSCodeProjects\\Current Version\\Edcs-User Registration_QA - Smoke Testing\\src\\tests\\smoke\\hrms.spec.ts",
+                            "column": 9,
+                            "line": 190
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('tr').filter({ hasText: '16935' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('tr').filter({ hasText: '16935' })\u001b[22m\n\n\n  188 |       await expect(\n  189 |         page.locator(\"tr\", { hasText: hrms.employeeIdentity.employeeNumber }),\n> 190 |       ).toBeVisible();\n      |         ^\n  191 |     },\n  192 |   );\n  193 |\n    at C:\\Users\\WaseemNooruddin\\VSCodeProjects\\Current Version\\Edcs-User Registration_QA - Smoke Testing\\src\\tests\\smoke\\hrms.spec.ts:190:9"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-24T10:24:26.110Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\WaseemNooruddin\\VSCodeProjects\\Current Version\\Edcs-User Registration_QA - Smoke Testing\\test-results\\smoke-hrms-Employee-Regist-cc7a9-ee-appears-in-Employee-List-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\WaseemNooruddin\\VSCodeProjects\\Current Version\\Edcs-User Registration_QA - Smoke Testing\\test-results\\smoke-hrms-Employee-Regist-cc7a9-ee-appears-in-Employee-List-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\WaseemNooruddin\\VSCodeProjects\\Current Version\\Edcs-User Registration_QA - Smoke Testing\\test-results\\smoke-hrms-Employee-Regist-cc7a9-ee-appears-in-Employee-List-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\WaseemNooruddin\\VSCodeProjects\\Current Version\\Edcs-User Registration_QA - Smoke Testing\\src\\tests\\smoke\\hrms.spec.ts",
+                        "column": 9,
+                        "line": 190
+                      }
+                    },
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 30546,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "C:\\Users\\WaseemNooruddin\\VSCodeProjects\\Current Version\\Edcs-User Registration_QA - Smoke Testing\\src\\pages\\hrms.page.ts",
+                            "column": 8,
+                            "line": 28
+                          },
+                          "message": "Error: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('//div[@role=\\'button\\' and .//p[normalize-space()=\\'Register Employee\\']]')\u001b[22m\n\n\n   at ..\\pages\\hrms.page.ts:28\n\n  26 |         \"//div[@role='button' and .//p[normalize-space()='Register Employee']]\",\n  27 |       )\n> 28 |       .click();\n     |        ^\n  29 |   }\n  30 |\n  31 |   async clickAddNew() {\n    at HrmsPage.clickRegisterEmployee (C:\\Users\\WaseemNooruddin\\VSCodeProjects\\Current Version\\Edcs-User Registration_QA - Smoke Testing\\src\\pages\\hrms.page.ts:28:8)\n    at C:\\Users\\WaseemNooruddin\\VSCodeProjects\\Current Version\\Edcs-User Registration_QA - Smoke Testing\\src\\tests\\smoke\\hrms.spec.ts:185:22"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-03-24T10:24:56.812Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\WaseemNooruddin\\VSCodeProjects\\Current Version\\Edcs-User Registration_QA - Smoke Testing\\test-results\\smoke-hrms-Employee-Regist-cc7a9-ee-appears-in-Employee-List-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\WaseemNooruddin\\VSCodeProjects\\Current Version\\Edcs-User Registration_QA - Smoke Testing\\test-results\\smoke-hrms-Employee-Regist-cc7a9-ee-appears-in-Employee-List-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\WaseemNooruddin\\VSCodeProjects\\Current Version\\Edcs-User Registration_QA - Smoke Testing\\test-results\\smoke-hrms-Employee-Regist-cc7a9-ee-appears-in-Employee-List-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Users\\WaseemNooruddin\\VSCodeProjects\\Current Version\\Edcs-User Registration_QA - Smoke Testing\\test-results\\smoke-hrms-Employee-Regist-cc7a9-ee-appears-in-Employee-List-chromium-retry1\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "7b4c50450c5c599c5945-db7ff9f9e82ceddb4509",
+              "file": "smoke/hrms.spec.ts",
+              "line": 173,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-03-24T10:24:25.445Z",
+    "duration": 62218.4,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

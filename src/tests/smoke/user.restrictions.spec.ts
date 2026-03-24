@@ -18,7 +18,7 @@ test.describe("User Restrictions", () => {
     "Verify navigation to User Restrictions page",
     { tag: ["@smoke", "@TC_30", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       const userRestrictionsPage = new UserRestrictionsPage(page);
@@ -34,7 +34,7 @@ test.describe("User Restrictions", () => {
     "Verify branch selection and user list display",
     { tag: ["@smoke", "@TC_31", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       const userRestrictionsPage = new UserRestrictionsPage(page);
@@ -52,7 +52,7 @@ test.describe("User Restrictions", () => {
     "Verify user selection from the list",
     { tag: ["@smoke", "@TC_32", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       const userRestrictionsPage = new UserRestrictionsPage(page);
@@ -62,7 +62,7 @@ test.describe("User Restrictions", () => {
         page.getByRole("heading", { name: "User Restrictions" }),
       ).toBeVisible();
       await userRestrictionsPage.selctBranch();
-      await userRestrictionsPage.selectBranchByName(testdata.branchName);
+      await userRestrictionsPage.selectBranchByName(testdata.organizationStructure.branchName);
       await userRestrictionsPage.clickUserId();
     },
   );
@@ -71,7 +71,7 @@ test.describe("User Restrictions", () => {
     "Verify adding a new restriction to the user",
     { tag: ["@smoke", "@TC_33", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       const userRestrictionsPage = new UserRestrictionsPage(page);
@@ -81,9 +81,9 @@ test.describe("User Restrictions", () => {
         page.getByRole("heading", { name: "User Restrictions" }),
       ).toBeVisible();
       await userRestrictionsPage.selctBranch();
-      await userRestrictionsPage.selectBranchByName(testdata.branchName);
+      await userRestrictionsPage.selectBranchByName(testdata.organizationStructure.branchName);
       await userRestrictionsPage.clickUserId();
-      await userRestrictionsPage.selectUserId(testdata.userId_Restriction);
+      await userRestrictionsPage.selectUserId(testdata.restrictionConfiguration.userId_Restriction);
       await userRestrictionsPage.clickAdd();
     },
   );

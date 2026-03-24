@@ -19,7 +19,7 @@ test.describe("role restriction Page", () => {
     "Verify user page loads correctly",
     { tag: ["@smoke", "@TC_26", "@positive1"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       await navBarpage.clickRoleRestriction();
@@ -30,12 +30,12 @@ test.describe("role restriction Page", () => {
     "Verify role selection and display of existing allowed actions",
     { tag: ["@smoke", "@TC_27", "@positive1"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       const roleRestrictionPage = new RoleRestrictionPage(page);
       await navBarpage.clickRoleRestriction();
-      await roleRestrictionPage.selectUserRole(testdata.selectUserRole);
+      await roleRestrictionPage.selectRandomUserRole();
       await expect(
         page.getByRole("heading", { name: "Role Restriction" }),
       ).toBeVisible();
@@ -46,12 +46,12 @@ test.describe("role restriction Page", () => {
     "Verify adding a new allowed action to a role",
     { tag: ["@smoke", "@TC_28", "@positive1"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       const roleRestrictionPage = new RoleRestrictionPage(page);
       await navBarpage.clickRoleRestriction();
-      await roleRestrictionPage.selectUserRole(testdata.selectUserRole);
+      await roleRestrictionPage.selectRandomUserRole();
       await expect(
         page.getByRole("heading", { name: "Role Restriction" }),
       ).toBeVisible();
@@ -64,12 +64,12 @@ test.describe("role restriction Page", () => {
     "Verify restricting (removing) an existing action from a role",
     { tag: ["@smoke", "@TC_29", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       const roleRestrictionPage = new RoleRestrictionPage(page);
       await navBarpage.clickRoleRestriction();
-      await roleRestrictionPage.selectUserRole(testdata.selectUserRole);
+      await roleRestrictionPage.selectRandomUserRole();
       await expect(
         page.getByRole("heading", { name: "Role Restriction" }),
       ).toBeVisible();

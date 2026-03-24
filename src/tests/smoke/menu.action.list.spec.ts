@@ -18,7 +18,7 @@ test.describe("Menu Action List Page", () => {
     "Verify Menu Action List page loads correctly",
     { tag: ["@smoke", "@TC_22", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+        await loginPage.login(credentials.admin2.username, credentials.admin2.password);
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       const menuActionListPage = new MenuActionListPage(page);
@@ -26,8 +26,8 @@ test.describe("Menu Action List Page", () => {
       await expect(
         page.getByRole("heading", { name: "Menu Action List" }),
       ).toBeVisible();
-      await menuActionListPage.searchMenuActionList(testdata.searchMenuActionList);
-      await expect(page.getByText(testdata.searchMenuActionList, { exact: false })).toBeVisible();
+      await menuActionListPage.searchMenuActionList(testdata.systemOperations.searchMenuActionList);
+      await expect(page.getByText(testdata.systemOperations.searchMenuActionList, { exact: false })).toBeVisible();
     },
   );
 });

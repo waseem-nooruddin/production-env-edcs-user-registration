@@ -1,49 +1,98 @@
 {
-    "hrms_enterFullName": "Waseem Nooruddin",
-    "hrms_enterInitials": "Mr.",
-    "hrms_enterSurName": "Nooruddin",
-    "hrms_enterSalutation": "Waseem Nooruddin",
-    "hrms_dateOfBirth": "1999-01-01",
-    "hrms_placeOfBirth": "Karachi",
-    "hrms_bloodGroup": "A+",
-    "hrms_gender": "Male",
-    "hrms_nic": "199629810095",
-    "hrms_nicDateOfIssue": "2010-01-01",
-    "hrms_enterMaritalStatus": "UnMarried",
-    "hrms_dateOfJoin": "2026-01-01",
-    "hrms_noticeDate": "ONE MONTH",
-    "hrms_workShipCategoryId": "NORMAL",
-    "hrms_enterConfirmationDueOn": "2026-3-30",
-    "hrms_personalGrade": "GRADE FOUR",
-    "hrms_costCenter": "Holiday resort ",
-    "hrms_enterjobCategory": "NORMAL",
-    "hrms_enterCurrentDesignation": "Driver",
-    "hrms_enterdateofDesignation": "2026-02-30",
-    "hrms_enterreportingPerson": "50146 -  Nooruddin",
-    "enterReportingDesignation": "manager",
-    "hrms_enterpermanenetLocation": "Head office  ",
-    "hrms_enterTemporaryLocation": "Head office  ",
-    "hrms_enterfromDate": "2026-01-01",
-    "hrms_AddressLine1": "125 Colombo 10",
-    "hrms_AddressLine2": "125 Colombo 10",
-    "hrms_AddressLine3": "Nugegoda",
-    "hrms_province": "Northern",
-    "hrms_district": "Jaffna",
-    "hrms_city": "Atchuveli",
-    "hrms_fillEmail": "waseem10nooruddin@gmail.com",
-    "hrms_fillMobile": "0766395531",
-    "hrms_fillEmergencyName": "Suha",
-    "hrms_fillRelationship": "Mother",
-    "hrms_fillEmergencyMobile": "078554322",
-    "hrms_fillTelephone": "0112864236",
-    
-    "Emplloyee_EPFNumber": "345567",
-    "searchEmployeeId": "58070",
-    "Employee_Number_1": "47072",
-    "slectBranch": "Head Office - Default",
-    "branchName": "Kandy",
-    "Division": "Default",
-    "Resigned": "NOT AVAILABLE",
-    "EmployeeType": "Permanent"
+  "personalInformation": {
+    "title": "Mr.",
+    "nameInFull": "Waseem Nooruddin",
+    "initials": "W",
+    "surname": "Nooruddin",
+    "personalFileName": "W Nooruddin",
+    "gender": "Male",
+    "dateOfBirth": "1996-10-24",
+    "placeOfBirth": "Colombo"
+  },
+  "identificationInformation": {
+    "nicNumber": "123456789012",
+    "nicIssueDate": "2020-01-15",
+    "bloodGroup": "O+"
+  },
+  "ethnicInformation": {
+    "nationality": "",
+    "religion": ""
+  },
+  "additionalInformation": {
+    "maritalStatus": "Unmarried"
+  },
+  "employeeIdentity": {
+    "referenceNumber": "55258",
+    "employeeNumber": "18773",
+    "userId": "55258"
+  },
+  "organizationDetails": {
+    "branch": "Head Office",
+    "division": "Finance"
+  },
+  "appointmentInformation": {
+    "resignedTerminated": "Active",
+    "employeeType": "Permanent",
+    "dateOfJoin": "2024-01-15",
+    "retirementExpiry": "2050-01-15",
+    "workingShiftCategory": "General",
+    "priorNoticePeriod": "30 Days",
+    "confirmationDueOn": "2024-04-15",
+    "personalGrade": "Grade 2",
+    "costCenter": "General"
+  },
+  "employeePosition": {
+    "currentEmployment": true,
+    "positionHistory": [
+      {
+        "jobCategory": "Permanent",
+        "designation": "Software Engineer",
+        "reportingPerson": "Manager",
+        "startDate": "2024-01-15"
+      }
+    ]
+  },
+  "locationDetails": {
+    "locationHistory": [
+      {
+        "location": "Head Office",
+        "fromDate": "2024-01-15",
+        "toDate": ""
+      }
+    ]
+  },
+  "residentialAddress": {
+    "line1": "150 Railway Road Udahamulla, Nugegoda.",
+    "line2": "Nugegoda",
+    "line3": "Nugegoda",
+    "province": "North Central",
+    "district": "Polonnaruwa",
+    "cityTown": "Giritale",
+    "postalCode": "51026"
+  },
+  "contactDetails": {
+    "email": "waseemnooruddin@gmail.com",
+    "mobile": "0766395531"
+  },
+  "qualifications": {
+    "qualificationHistory": [
+      {
+        "qualificationType": "Higher Education",
+        "qualification": "Bachelor of Science",
+        "courseDuration": "4 Years"
+      }
+    ]
+  },
+  "salaryInformation": {
+    "fixedAllowance": false,
+    "basicSalary": "100000.00",
+    "allowanceType": "Transport"
+  },
+  "bankInformation": {
+    "status": "Active",
+    "bank": "Bank of Ceylon",
+    "division": "Main Branch",
+    "accountType": "Savings",
+    "accountNumber": "1234567890"
+  }
 }
-

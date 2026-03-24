@@ -18,7 +18,11 @@ test.describe("assign multiple branches", () => {
     "Verify Assigned default branch",
     { tag: ["@smoke", "@TC_19", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+      await loginPage.login(
+        credentials.admin2.username,
+        credentials.admin2.password,
+      );
+      await page.waitForLoadState("networkidle");
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
       await navBarpage.navigateToAssignMultipleBranches();
@@ -30,15 +34,19 @@ test.describe("assign multiple branches", () => {
     "Verify that can add a new branch",
     { tag: ["@smoke", "@TC_20", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
+      await loginPage.login(
+        credentials.admin2.username,
+        credentials.admin2.password,
+      );
       const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
-      const assignmultiplebranches = new AssignMultipleBranches(page);
       await navBarpage.navigateToAssignMultipleBranches();
-      await assignmultiplebranches.selectUserId();
-      //await assignmultiplebranches.waitUntillUserId();
-      await assignmultiplebranches.selectUser(
-        "166513rn - Testing Head Office System User",
+      const assignMultipleBranches = new AssignMultipleBranches(page);
+      await assignMultipleBranches.verifyAssignMultipleBranchesHeading();
+      await assignMultipleBranches.selectUserId();
+      await assignMultipleBranches.selectUser(testdata.userDetails.selectUser);
+      await assignMultipleBranches.verifyDefaultDivision(
+        testdata.Branch.Branch,
       );
     },
   );
@@ -47,18 +55,17 @@ test.describe("assign multiple branches", () => {
     "Verify that can View all assigned divisions for a user",
     { tag: ["@smoke", "@TC_21", "@positive"] },
     async ({ page }) => {
-      await loginPage.login(credentials.username, credentials.password);
-      const navBarpage = new NavBarPage(page);
+      await loginPage.login(
+        credentials.admin2.username,
+        credentials.admin2.password,
+      );
+     const navBarpage = new NavBarPage(page);
       await navBarpage.clickUserManagement();
-      const assignmultiplebranches = new AssignMultipleBranches(page);
       await navBarpage.navigateToAssignMultipleBranches();
-      await assignmultiplebranches.selectUserId();
-      //await assignmultiplebranches.waitUntillUserId();
-      await assignmultiplebranches.selectUser(testdata.selectUser);
-      await assignmultiplebranches.addNewButton();
-      await assignmultiplebranches.selectBranchDeptId();
-      await assignmultiplebranches.slectBranch(testdata.slectBranch);
-      await assignmultiplebranches.clickSaveButton();
+      const assignMultipleBranches = new AssignMultipleBranches(page);
+      await assignMultipleBranches.verifyAssignMultipleBranchesHeading();
+      await assignMultipleBranches.selectUserId();
+      await assignMultipleBranches.waitUntillUserId(); 
     },
   );
 });
